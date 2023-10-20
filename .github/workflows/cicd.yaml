@@ -1,0 +1,29 @@
+name: 🕵️ PR Inspector Workflow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  cicd:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 🔄 Checkout code
+      uses: actions/checkout@v2
+
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x  # Specify your desired Python version
+
+    - name: 📦 Install dependencies
+      run: pip install -r requirements-dev.txt  # Replace with your requirements file
+
+    - name: ❄️ Run Flake8
+      run: flake8 .
+
+    - name: 🧪 Run unit tests
+      run: pytest  # Replace with the command to run your tests
