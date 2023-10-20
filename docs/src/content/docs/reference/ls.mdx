@@ -1,0 +1,35 @@
+---
+title: bookshelf ls
+description: List all the current stories on your bookshelf
+---
+
+### Usage
+
+```bash
+bookshelf ls [OPTIONS]
+```
+### Description
+
+Use `bookshelf ls` to list all the current stories on your bookshelf. You can also filter the stories by tags.
+
+### Options
+
+| Name              | Shorthand | Default | Description                                                                                                         |
+|-------            | --------- | ------- | -----------                                                                                                         |
+| `--with-tags`|   |  | Comma-separated list of tags that you wish to filter in. |
+
+### Examples
+
+#### List all stories
+<pre><span style="background-color:#26384B"><font color="#93FF91"> root </font></span><font color="#26384B"></font> <font color="#49FF6D">bookshelf</font> ls
+<i>                   📖 Stories 📖                    </i>
+╔═════════════════╤══════════════╤═════════════════╗
+║<b>     ✏️ Name     </b>│<b> 🗓️ Start Date </b>│<b>    🏷️ Tags      </b>║
+╟─────────────────┼──────────────┼─────────────────╢
+║<font color="#16A085"> example-story-1 </font>│<font color="#BDC3C7">  22/10/2023  </font>│<font color="#FFBC51">    [&apos;hello&apos;,    </font>║
+║<font color="#16A085">                 </font>│<font color="#BDC3C7">              </font>│<font color="#FFBC51">    &apos;world&apos;]     </font>║
+║<font color="#16A085"> example-story-2 </font>│<font color="#BDC3C7">  22/10/2023  </font>│<font color="#FFBC51">       []        </font>║
+║<font color="#16A085"> example-story-3 </font>│<font color="#BDC3C7">  22/10/2023  </font>│<font color="#FFBC51">       []        </font>║
+╚═════════════════╧══════════════╧═════════════════╝</pre>
+
+#### List stories with specific tags
