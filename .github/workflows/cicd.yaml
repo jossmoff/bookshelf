@@ -26,9 +26,4 @@ jobs:
       run: flake8 .
 
     - name: 🧪 Run unit tests
-      run: pytest --cov
-    
-    - name: ☂️ Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v3
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      run: pytest  # Replace with the command to run your tests
