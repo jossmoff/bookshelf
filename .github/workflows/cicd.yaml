@@ -27,3 +27,8 @@ jobs:
 
     - name: 🧪 Run unit tests
       run: pytest  # Replace with the command to run your tests
+    
+    - name: ☂️ Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
