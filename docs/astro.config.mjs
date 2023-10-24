@@ -17,6 +17,7 @@ export default defineConfig({
 					items: [
 						// Each item here is one entry in the navigation menu.
 						{ label: 'Installation', link: '/getting-started/installation/' },
+						{ label: 'Enabling Autocomplete', link: '/getting-started/autocomplete/' },
 						{ label: 'Glossary', link: '/getting-started/glossary/' },
 					],
 				},

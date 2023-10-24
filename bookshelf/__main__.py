@@ -7,9 +7,11 @@ from bookshelf.storage import BookshelfStorage
 from bookshelf.models import Chapter, Story
 from bookshelf.exceptions import StoryAlreadyExistsException, StoryNotFoundException, ChapterInProgressException, \
     StoryAlreadyFinishedException
+from bookshelf.param_types import StoryType
 
 bookshelf_storage = BookshelfStorage()
 bookshelf_console = BookshelfConsole(bookshelf_storage)
+story_type = StoryType(bookshelf_storage)
 
 
 def entry_point():
@@ -26,7 +28,7 @@ def bookshelf():
 
 
 @bookshelf.command(name='create')
-@click.argument('story_name')
+@click.argument('story_name', type=story_type)
 @click.option('-f',
               '--force',
               type=str,
@@ -64,7 +66,7 @@ def create_story_entry(story_name: str, force: bool, tags: str, start_chapter: b
 
 
 @bookshelf.command(name='start')
-@click.argument('story_name')
+@click.argument('story_name', type=story_type)
 def start_chapter_entry(story_name):
     """Start a new chapter for a story on your bookshelf"""
     try:
@@ -90,7 +92,7 @@ def start_chapter_entry(story_name):
 
 
 @bookshelf.command(name='stop')
-@click.argument('story_name')
+@click.argument('story_name', type=story_type)
 def stop_chapter_entry(story_name):
     """Stop the current chapter of a story on your bookshelf"""
 
@@ -108,7 +110,7 @@ def stop_chapter_entry(story_name):
 
 
 @bookshelf.command(name='finish')
-@click.argument('story_name')
+@click.argument('story_name', type=story_type)
 def finish_story_entry(story_name):
     """Finish writing a story on your bookshelf"""
     try:
@@ -136,7 +138,7 @@ def list_stories_entry(with_tags: str):
 
 
 @bookshelf.command(name='rm')
-@click.argument('story_name')
+@click.argument('story_name', type=story_type)
 def remove_story_entry(story_name):
     """Remove a story from your bookshelf"""
     try:
@@ -149,7 +151,7 @@ def remove_story_entry(story_name):
 
 
 @bookshelf.command(name='info')
-@click.argument('story_name')
+@click.argument('story_name', type=story_type)
 def story_info_entry(story_name: str):
     """Displays the information for a given story on your bookshelf"""
     try:

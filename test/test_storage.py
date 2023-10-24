@@ -158,3 +158,29 @@ def test_get_all_stories_with_non_json(bookshelf_storage):
         stories = list(bookshelf_storage.get_all_stories())
 
     assert_that(stories).is_empty()
+
+
+def test_get_all_stories_matching_incomplete_name_filters_out_value(bookshelf_storage, mock_home):
+    test_story_1 = create_test_story(name='Test1')
+    test_story_2 = create_test_story(name='Test2')
+    test_story_3 = create_test_story(name='Test3')
+    test_story_4 = create_test_story(name='does_not_match')
+    test_stories = [test_story_1, test_story_2, test_story_3, test_story_4]
+
+    os.walk = MagicMock()
+    os.walk.return_value = [(BOOKSHELF_TASK_DIR,
+                             [],
+                             [f'{story.name}.json' for story in test_stories])]
+
+    def side_effect(*args, **kwargs):
+        # Use a generator to yield contents for each call
+        for story in test_stories:
+            yield str(story.to_json()).replace('\'', '"')
+
+    m_open = mock_open()
+    m_open().read.side_effect = side_effect()
+
+    with patch('builtins.open', m_open):
+        stories = list(bookshelf_storage.get_all_stories_matching_incomplete_name('Test'))
+
+    assert_that(stories).contains_only(test_story_1, test_story_2, test_story_3)
