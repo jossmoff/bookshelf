@@ -7,7 +7,7 @@
 </h1>
 
 <h4 align="center">
-   📚 A CLI tool for tracking your stories in the SDLC
+   📚 A CLI tool for tracking your stories in the software development lifecycle 
 </h4>
 
 
@@ -33,3 +33,50 @@
     <img src="https://img.shields.io/github/license/jossmoff/bookshelf.svg">
   </a>
 </p>
+
+## 🔎 Tracking your productivity has never been easier
+<div align="center">
+  <br>
+  <img src="docs/src/assets/example-terminal.png" width="60%"/>
+  <br>
+  <br>
+</div>
+
+## 🚀 Getting Started
+
+### 🛠️ Installation
+Use `pip` to install bookshelf:
+
+```bash
+pip install bookshelf
+```
+
+To optimally set up bookshelf, follow the [Getting Started guide in the documentation](https://bookshelf.docs.joss.dev/getting-started/installation/).
+
+### 🧑‍💻 Usage
+The documentation for bookshelf is available at [bookshelf.docs.joss.dev](https://bookshelf.docs.joss.dev/) and contains a detailed guide on how to use bookshelf.
+
+To list available commands, either run `bookshelf` with no parameters or execute `bookshelf` help:
+The base command for the `bookshelf` CLI.
+
+#### Subcommands
+
+| Name                                      | Description                                                  |
+| -----------                               | -----------                                                  |
+| <a href="/reference/create/">create</a>   | Create a new story for your bookshelf                        |
+| <a href="/reference/create/">finish  </a> | Finish writing a story on your bookshelf                     |
+| <a href="/reference/create/">info   </a>  | Displays the information for a given story on your bookshelf |
+| <a href="/reference/create/">ls    </a>   | List all the current stories on your bookshelf               |
+| <a href="/reference/create/">rm    </a>   | Remove a story from your bookshelf                           |
+| <a href="/reference/create/">start  </a>  | Start a new chapter for a story on your bookshelf            |
+| <a href="/reference/create/">stop    </a> | Stop the current chapter of a story on your bookshelf        |
+
+## 🤝 Contributing 
+
+We're excited that you want to contribute to bookshelf. Your help and contributions are greatly appreciated!
+Read the [contribution guidelines](CONTRIBUTING.md) to get started.
+
+## 📜 Code of Conduct 
+
+We value your contribution and participation in our community. To ensure a positive and inclusive environment for all, we have established a Code of Conduct.
+Read the [Code of Conduct](CODE_OF_CONDUCT.md) to learn more.
