@@ -3,7 +3,7 @@ from assertpy import assert_that
 from click.shell_completion import CompletionItem
 
 from bookshelf.param_types import StoryType
-from utils.storage_utils import create_test_story
+from test.utils.storage_utils import create_test_story
 
 
 def test_story_type_init():
