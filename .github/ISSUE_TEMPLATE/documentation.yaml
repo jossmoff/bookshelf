@@ -1,7 +1,7 @@
 name: ✨ Enhancement
-description: Add an enhancement for bookshelf
-title: "[:sparkles:]"
-labels: ["enhancement"]
+description: Add an documentation enhancement for bookshelf
+title: "[:memo:]"
+labels: ["documentation", "enhancement""]
 assignees:
   - jossmoff
 body:
@@ -24,7 +24,7 @@ body:
   - type: textarea
     attributes:
       label: Description
-      description: Describe the enhancement what you want, including motivation if it exists.
+      description: Describe the documentation enhancement what you want, including motivation if it exists.
 
   - type: textarea
     attributes:
