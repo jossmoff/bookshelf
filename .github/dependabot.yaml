@@ -5,9 +5,10 @@ updates:
     directory: "/"
     schedule:
       interval: daily
+    name: "📦 Dependency Scanning"
     reviewers:
       - "jossmoff"
     commit-message:
       prefix: "⬆️"
     labels:
-      - "🍼 dependencies"
+      - "dependencies"
