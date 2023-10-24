@@ -58,3 +58,8 @@ class BookshelfStorage:
                         except json.JSONDecodeError:
                             # TODO: Maybe add some logs here that can be enabled with --logs
                             pass
+
+    def get_all_stories_matching_incomplete_name(self, incomplete_name: str) -> Generator[Story, None, None]:
+        for story in self.get_all_stories():
+            if incomplete_name in story.name:
+                yield story
