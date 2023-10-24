@@ -1,0 +1,70 @@
+---
+title: Enabling Autocomplete
+description: A guide to setting up autocomplete with bookshelf
+---
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+
+All of this information is taken from the [click documentation](https://click.palletsprojects.com/en/8.1.x/shell-completion/), and you should read it if you want to know more.
+In order for completion to be used, the user needs to register a special function with their shell.
+The script is different for every shell, and Click will output it for bookshelf when called with `_BOOKSHELF_COMPLETE` set to `{shell}_source`.
+The built-in shells are bash, zsh, and fish.
+
+## Using Eval
+
+<Tabs>
+	<TabItem label="Bash">
+	    Add this to ~/.bashrc:
+		```bash
+		eval "$(_BOOKSHELF_COMPLETE=bash_source bookshelf)"
+		```
+	</TabItem>
+	<TabItem label="Zsh">
+		Add this to ~/.zshrc:
+        ```bash
+        eval "$(_BOOKSHELF_COMPLETE=zsh_source bookshelf)"
+        ```
+
+	</TabItem>
+	<TabItem label="Fish">
+	    Add this to ~/.config/fish/completions/bookshelf.fish:
+		```bash
+		_BOOKSHELF_COMPLETE=fish_source bookshelf | source
+		```
+		This is the same file used for the activation script method below. For Fish it’s probably always easier to use that method.
+	</TabItem>
+</Tabs>
+
+## Using an Activation Script
+Using eval means that the command is invoked and evaluated every time a shell is started, which can delay shell responsiveness.
+To speed it up, write the generated script to a file, then source that.
+You can generate the files ahead of time and distribute them with your program to save your users a step.
+
+<Tabs>
+	<TabItem label="Bash">
+	    Save the script somewhere.
+        ```bash
+        _BOOKSHELF_COMPLETE=bash_source bookshelf > ~/.bookshelf-complete.bash
+        ```
+        Source the file in ~/.bashrc.
+        ```bash
+        . ~/.bookshelf-complete.bash
+        ```
+	</TabItem>
+	<TabItem label="Zsh">
+		Save the script somewhere.
+        ```bash
+        _BOOKSHELF_COMPLETE=zsh_source bookshelf > ~/.bookshelf-complete.zsh
+        ```
+        Source the file in ~/.zshrc.
+        ```bash
+        . ~/.bookshelf-complete.zsh
+        ```
+	</TabItem>
+	<TabItem label="Fish">
+	    Save the script to ~/.config/fish/completions/bookshelf.fish:
+        ```bash
+        _BOOKSHELF_COMPLETE=fish_source bookshelf > ~/.config/fish/completions/bookshelf.fish
+        ```
+	</TabItem>
+</Tabs>
