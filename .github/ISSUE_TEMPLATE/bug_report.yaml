@@ -1,5 +1,5 @@
 name: 🐛 Bug report
-title: "[Bug] "
+title: "[:bug:] "
 description: Problems and issues with code of bookshelf
 labels: ["🐛 bug"]
 assignees:
