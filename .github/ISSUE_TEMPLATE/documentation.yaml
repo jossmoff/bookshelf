@@ -1,8 +1,8 @@
 name: ✨ Enhancement
 description: Add an documentation enhancement for bookshelf
-title: "[:memo:]"
-labels: ["documentation", "enhancement""]
-assignees:
+title: ":memo:"
+labels: "documentation, enhancement"
+assignee:
   - jossmoff
 body:
   - type: markdown
