@@ -2,8 +2,6 @@ name: 📚 Documentation
 description: Add an documentation enhancement for bookshelf
 title: ":memo:"
 labels: "documentation, enhancement"
-assignee:
-  - jossmoff
 body:
   - type: markdown
     attributes:
