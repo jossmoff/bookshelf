@@ -61,15 +61,16 @@ The base command for the `bookshelf` CLI.
 
 #### Subcommands
 
-| Name                                      | Description                                                  |
-| -----------                               | -----------                                                  |
-| <a href="/reference/create/">create</a>   | Create a new story for your bookshelf                        |
-| <a href="/reference/create/">finish  </a> | Finish writing a story on your bookshelf                     |
-| <a href="/reference/create/">info   </a>  | Displays the information for a given story on your bookshelf |
-| <a href="/reference/create/">ls    </a>   | List all the current stories on your bookshelf               |
-| <a href="/reference/create/">rm    </a>   | Remove a story from your bookshelf                           |
-| <a href="/reference/create/">start  </a>  | Start a new chapter for a story on your bookshelf            |
-| <a href="/reference/create/">stop    </a> | Stop the current chapter of a story on your bookshelf        |
+| Name                                                                     | Description                                                  |
+|--------------------------------------------------------------------------|--------------------------------------------------------------|
+| <a href="https://bookshelf.docs.joss.dev/reference/create/">cancel</a>   | Cancel the current chapter of a story on your bookshelf      |
+| <a href="https://bookshelf.docs.joss.dev/reference/create/">create</a>   | Create a new story for your bookshelf                        |
+| <a href="https://bookshelf.docs.joss.dev/reference/finish/">finish  </a> | Finish writing a story on your bookshelf                     |
+| <a href="https://bookshelf.docs.joss.dev/reference/info/">info   </a>    | Displays the information for a given story on your bookshelf |
+| <a href="https://bookshelf.docs.joss.dev/reference/ls/">ls    </a>       | List all the current stories on your bookshelf               |
+| <a href="https://bookshelf.docs.joss.dev/reference/rm/">rm    </a>       | Remove a story from your bookshelf                           |
+| <a href="https://bookshelf.docs.joss.dev/reference/start/">start  </a>   | Start a new chapter for a story on your bookshelf            |
+| <a href="https://bookshelf.docs.joss.dev/reference/stop/">stop    </a>   | Stop the current chapter of a story on your bookshelf        |
 
 ## 🤝 Contributing 
 
