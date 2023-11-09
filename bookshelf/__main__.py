@@ -6,7 +6,7 @@ from bookshelf.console import BookshelfConsole
 from bookshelf.storage import BookshelfStorage
 from bookshelf.models import Chapter, Story
 from bookshelf.exceptions import StoryAlreadyExistsException, StoryNotFoundException, ChapterInProgressException, \
-    StoryAlreadyFinishedException
+    StoryAlreadyFinishedException, ChapterNotInProgressException
 from bookshelf.param_types import StoryType
 
 bookshelf_storage = BookshelfStorage()
@@ -59,10 +59,9 @@ def create_story_entry(story_name: str, force: bool, tags: str, start_chapter: b
             story.add_chapter(Chapter(start_time))
 
         bookshelf_storage.save_story(story)
-
         bookshelf_console.render_story_panel(story)
     except KeyboardInterrupt:
-        pass
+        bookshelf_console.print(f'📕 Story \'{story_name}\' has been created!')
 
 
 @bookshelf.command(name='start')
@@ -88,7 +87,7 @@ def start_chapter_entry(story_name):
         bookshelf_storage.save_story(story)
         bookshelf_console.render_story_panel(story)
     except KeyboardInterrupt:
-        pass
+        bookshelf_console.print(f'📖 A new chapter in \'{story_name}\' has been started!')
 
 
 @bookshelf.command(name='stop')
@@ -159,3 +158,24 @@ def story_info_entry(story_name: str):
         bookshelf_console.render_story_panel(story)
     except KeyboardInterrupt:
         pass
+
+
+@bookshelf.command(name='cancel')
+@click.argument('story_name', type=story_type)
+def cancel_chapter(story_name):
+    """Cancel the current chapter of a story on your bookshelf"""
+    try:
+        if not bookshelf_storage.story_exists(story_name):
+            raise StoryNotFoundException(story_name)
+
+        story = bookshelf_storage.load_story(story_name)
+
+        if not story.in_progress():
+            raise ChapterNotInProgressException(story_name)
+
+        story.cancel_chapter()
+
+        bookshelf_storage.save_story(story)
+        bookshelf_console.render_story_panel(story)
+    except KeyboardInterrupt:
+        bookshelf_console.print(f'❌ Current chapter in \'{story_name}\' has been cancelled!')

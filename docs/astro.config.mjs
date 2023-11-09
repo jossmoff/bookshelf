@@ -26,6 +26,7 @@ export default defineConfig({
 					items: [
 						// Each item here is one entry in the navigation menu.
 						{ label: 'Use the bookshelf command line', link: '/reference/use-bookshelf-cli/' },
+						{ label: 'bookshelf cancel', link: '/reference/cancel/' },
 						{ label: 'bookshelf create', link: '/reference/create/' },
 						{ label: 'bookshelf finish', link: '/reference/finish/' },
 						{ label: 'bookshelf info', link: '/reference/info/' },
