@@ -159,9 +159,10 @@ def story_info_entry(story_name: str):
     except KeyboardInterrupt:
         pass
 
+
 @bookshelf.command(name='cancel')
 @click.argument('story_name', type=story_type)
-def start_chapter_entry(story_name):
+def cancel_chapter(story_name):
     """Cancel the current chapter of a story on your bookshelf"""
     try:
         if not bookshelf_storage.story_exists(story_name):
