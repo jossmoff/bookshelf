@@ -4,6 +4,11 @@ from typing import Optional
 from bookshelf.models import Chapter
 
 
+def create_in_progress_chapter() -> Chapter:
+    start_time = datetime.now()
+    return Chapter(start_time)
+
+
 def create_chapter_from_delta(delta: timedelta, start_time: Optional[datetime] = None) -> Chapter:
     if start_time is None:
         start_time = datetime.now()

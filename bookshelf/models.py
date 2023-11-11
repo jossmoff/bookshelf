@@ -61,6 +61,9 @@ class Story:
     def get_last_chapter(self) -> Chapter:
         return self.chapters[-1]
 
+    def cancel_chapter(self) -> None:
+        self.chapters.pop()
+
     def finish_chapter(self) -> None:
         if self.in_progress():
             self.get_last_chapter().end_time = datetime.now()

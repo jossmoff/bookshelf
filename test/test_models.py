@@ -4,7 +4,7 @@ from datetime import timedelta, datetime
 from assertpy import assert_that
 
 from bookshelf.models import Chapter, Story
-from test.utils.chapter_utils import create_chapter_from_delta
+from test.utils.chapter_utils import create_chapter_from_delta, create_in_progress_chapter
 
 STORY_NAME = 'TEST_STORY'
 
@@ -46,7 +46,6 @@ def test_chapter_to_dict(sample_chapter):
 def test_story_to_dict(sample_story):
     story_dict = sample_story.to_json()
     assert_that(story_dict).is_equal_to(STORY_JSON)
-    assert story_dict == STORY_JSON
 
 
 def test_story_from_dict():
@@ -65,5 +64,14 @@ def test_compute_duration_from_chapters():
     chapter2 = create_chapter_from_delta(timedelta(hours=1))
     chapters = [chapter1, chapter2]
     story = Story(STORY_NAME, datetime(2023, 1, 1, 10, 0), datetime(2023, 1, 1, 14, 0), chapters)
+    assert_that(story.compute_elapsed_time_from_chapters()).is_equal_to(timedelta(hours=2))
 
-    assert story.compute_elapsed_time_from_chapters() == timedelta(hours=2)
+
+def test_cancel_chapter():
+    chapter1 = create_chapter_from_delta(timedelta(hours=1))
+    chapter2 = create_chapter_from_delta(timedelta(hours=1))
+    in_progress_chapter = create_in_progress_chapter()
+    chapters = [chapter1, chapter2, in_progress_chapter]
+    story = Story(STORY_NAME, datetime(2023, 1, 1, 10, 0), datetime(2023, 1, 1, 14, 0), chapters)
+    story.cancel_chapter()
+    assert_that(story.chapters).contains_only(chapter1, chapter2)
