@@ -32,3 +32,26 @@ jobs:
       uses: codecov/codecov-action@v3
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+    - name: 📥 Download Mutation Testing Cache
+      uses: actions/download-artifact@v2
+      with:
+        name: mutmut-cache
+      continue-on-error: true
+
+    - name: 🦠 Run Mutation Tests
+      run: | 
+        mutmut run
+        mutmut html
+
+    - name: 📤 Upload Mutation Test Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: mutmut-html-report
+        path: html/bookshelf
+
+    - name: 📤 Upload Mutation Test Cache
+      uses: actions/upload-artifact@v2
+      with:
+        name: mutmut-cache
+        path: .mutmut-cache
