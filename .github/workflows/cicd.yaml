@@ -38,15 +38,7 @@ jobs:
       id: cache-pr
       with:
         path: .mutmut-cache
-        key: ${{ runner.os }}-mutmut-cache-${{ github.head_ref }}
-    
-    - name: 🗃️ Uncache Main Mutation Testing Cache
-      if: steps.cache.outputs.cache-hit != 'true'
-      uses: actions/cache/restore@v3
-      id: cache-main
-      with:
-        path: .mutmut-cache
-        key: ${{ runner.os }}-mutmut-cache-main
+        key: ${{ runner.os }}-mutmut-cache-${{ hashFiles('**/bookshelf') }}
 
     - name: 🦠 Run Mutation Tests
       run: | 
@@ -63,4 +55,4 @@ jobs:
       uses: actions/cache/save@v3
       with:
         path: .mutmut-cache
-        key: ${{ runner.os }}-mutmut-cache-${{ github.head_ref }}
+        key: ${{ runner.os }}-mutmut-cache-${{ hashFiles('**/bookshelf') }}
