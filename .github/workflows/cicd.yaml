@@ -50,7 +50,7 @@ jobs:
         name: mutmut-html-report
         path: html/bookshelf
 
-    - name: 🗃️ Cache Mutation Test Cache
+    - name: 🗃️ Cache Mutation Test Artifacts
       uses: actions/cache/save@v3
       with:
         path: .mutmut-cache
