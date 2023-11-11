@@ -41,7 +41,7 @@ jobs:
 
     - name: 🦠 Run Mutation Tests
       run: | 
-        mutmut run
+        mutmut run --no-progress
         mutmut html
 
     - name: 📤 Upload Mutation Test Report
