@@ -38,7 +38,7 @@ jobs:
       id: cache-pr
       with:
         path: .mutmut-cache
-        key: ${{ runner.os }}-mutmut-cache-${{ hashFiles('bookshelf') }}
+        key: ${{ runner.os }}-mutmut-cache-${{ hashFiles('bookshelf/*.py') }}
 
     - name: 🦠 Run Mutation Tests
       run: | 
@@ -55,4 +55,4 @@ jobs:
       uses: actions/cache/save@v3
       with:
         path: .mutmut-cache
-        key: ${{ runner.os }}-mutmut-cache-${{ hashFiles('bookshelf') }}
+        key: ${{ runner.os }}-mutmut-cache-${{ hashFiles('bookshelf/*.py') }}
