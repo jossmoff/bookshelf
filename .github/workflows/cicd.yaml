@@ -38,7 +38,7 @@ jobs:
       id: cache-pr
       with:
         path: path/to/dependencies
-        key: ${{ runner.os }}-mutmut-cache-${{GITHUB_HEAD_REF}}
+        key: ${{ runner.os }}-mutmut-cache-${{env.GITHUB_HEAD_REF}}
     
     - name: 🗃️ Uncache Main Mutation Testing Cache
       if: steps.cache.outputs.cache-hit != 'true'
@@ -63,4 +63,4 @@ jobs:
       uses: actions/cache/save@v3
       with:
         path: .mutmut-cache
-        key: ${{ runner.os }}-mutmut-cache-${{GITHUB_HEAD_REF}}
+        key: ${{ runner.os }}-mutmut-cache-${{env.GITHUB_HEAD_REF}}
