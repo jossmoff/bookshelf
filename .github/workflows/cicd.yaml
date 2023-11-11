@@ -12,12 +12,12 @@ jobs:
 
     steps:
     - name: 🔄 Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: 🐍 Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
-        python-version: 3.x  # Specify your desired Python version
+        python-version: 3.11
 
     - name: 📦 Install dependencies
       run: pip install -r requirements-dev.txt  # Replace with your requirements file
@@ -32,3 +32,26 @@ jobs:
       uses: codecov/codecov-action@v3
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+    - name: 🗃️ Uncache Mutation Testing Artifacts
+      uses: actions/cache/restore@v3
+      with:
+        path: .mutmut-cache
+        key: ${{ runner.os }}-mutmut-cache-${{ hashFiles('bookshelf/*.py') }}
+
+    - name: 🦠 Run Mutation Tests
+      run: | 
+        mutmut run --no-progress --CI
+        mutmut html
+
+    - name: 📤 Upload Mutation Test Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: mutmut-html-report
+        path: html/bookshelf
+
+    - name: 🗃️ Cache Mutation Test Cache
+      uses: actions/cache/save@v3
+      with:
+        path: .mutmut-cache
+        key: ${{ runner.os }}-mutmut-cache-${{ hashFiles('bookshelf/*.py') }}
