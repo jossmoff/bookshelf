@@ -34,10 +34,11 @@ jobs:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
     - name: 📥 Download Mutation Testing Cache
-      uses: actions/download-artifact@v2
+      uses: actions/cache/restore@v3
+      id: cache
       with:
-        name: mutmut-cache
-      continue-on-error: true
+        path: path/to/dependencies
+        key: ${{ runner.os }}-${{ hashFiles('**/.mutmut-cache') }}
 
     - name: 🦠 Run Mutation Tests
       run: | 
@@ -50,8 +51,8 @@ jobs:
         name: mutmut-html-report
         path: html/bookshelf
 
-    - name: 📤 Upload Mutation Test Cache
-      uses: actions/upload-artifact@v2
+    - name: 📤 Cache Mutation Test Cache
+      uses: actions/cache/save@v3
       with:
-        name: mutmut-cache
         path: .mutmut-cache
+        key: ${{ runner.os }}-${{ hashFiles('**/.mutmut-cache') }}
