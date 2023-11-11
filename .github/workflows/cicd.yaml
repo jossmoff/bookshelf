@@ -33,19 +33,27 @@ jobs:
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
-    - name: 📥 Download Mutation Testing Cache
+    - name: 🗃️ Uncache PR Mutation Testing Cache
       uses: actions/cache/restore@v3
-      id: cache
+      id: cache-pr
       with:
         path: path/to/dependencies
-        key: ${{ runner.os }}-${{ hashFiles('**/.mutmut-cache') }}
+        key: ${{ runner.os }}-mutmut-cache-${{ env.BRANCH_NAME }}
+    
+    - name: 🗃️ Uncache Main Mutation Testing Cache
+      if: steps.cache.outputs.cache-hit != 'true'
+      uses: actions/cache/restore@v3
+      id: cache-main
+      with:
+        path: .mutmut-cache
+        key: ${{ runner.os }}-mutmut-cache-main
 
     - name: 🦠 Run Mutation Tests
       run: | 
         mutmut run --no-progress --CI
         mutmut html
 
-    - name: 🗄️ Upload Mutation Test Report
+    - name: 📤 Upload Mutation Test Report
       uses: actions/upload-artifact@v2
       with:
         name: mutmut-html-report
@@ -55,4 +63,4 @@ jobs:
       uses: actions/cache/save@v3
       with:
         path: .mutmut-cache
-        key: ${{ runner.os }}-${{ hashFiles('**/.mutmut-cache') }}
+        key: ${{ runner.os }}-mutmut-cache-${{ env.BRANCH_NAME }}
