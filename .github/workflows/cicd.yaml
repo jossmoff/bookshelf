@@ -37,7 +37,7 @@ jobs:
       uses: actions/cache/restore@v3
       id: cache-pr
       with:
-        path: path/to/dependencies
+        path: .mutmut-cache
         key: ${{ runner.os }}-mutmut-cache-${{ github.head_ref }}
     
     - name: 🗃️ Uncache Main Mutation Testing Cache
