@@ -63,7 +63,7 @@ The base command for the `bookshelf` CLI.
 
 | Name                                                                     | Description                                                  |
 |--------------------------------------------------------------------------|--------------------------------------------------------------|
-| <a href="https://bookshelf.docs.joss.dev/reference/create/">cancel</a>   | Cancel the current chapter of a story on your bookshelf      |
+| <a href="https://bookshelf.docs.joss.dev/reference/cancel/">cancel</a>   | Cancel the current chapter of a story on your bookshelf      |
 | <a href="https://bookshelf.docs.joss.dev/reference/create/">create</a>   | Create a new story for your bookshelf                        |
 | <a href="https://bookshelf.docs.joss.dev/reference/finish/">finish  </a> | Finish writing a story on your bookshelf                     |
 | <a href="https://bookshelf.docs.joss.dev/reference/info/">info   </a>    | Displays the information for a given story on your bookshelf |
