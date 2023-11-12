@@ -77,6 +77,17 @@ class Story:
             self.finish_chapter()
         self.end_date = self.get_last_chapter().end_time
 
+    def _has_tag(self, tag: str) -> bool:
+        return tag in self.tags
+
+    def add_tag(self, tag: str) -> None:
+        if not self._has_tag(tag):
+            self.tags.append(tag)
+
+    def remove_tag(self, tag: str) -> None:
+        if self._has_tag(tag):
+            self.tags.remove(tag)
+
     def is_finished(self) -> bool:
         return self.end_date is not None
 
@@ -96,7 +107,7 @@ class Story:
         end_date = datetime.fromisoformat(data['end_date']) if data['end_date'] else None
         tags = data['tags']
         chapters = [Chapter.from_json(chapter_data) for chapter_data in data['chapters']]
-        return cls(name, start_date, end_date, chapters, tags)
+        return cls(name, start_date, end_date, chapters.copy(), tags.copy())
 
     def in_progress(self) -> bool:
         return self.get_last_chapter().in_progress() if len(self.chapters) > 0 else False
