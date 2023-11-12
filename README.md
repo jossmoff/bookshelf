@@ -71,6 +71,8 @@ The base command for the `bookshelf` CLI.
 | <a href="https://bookshelf.docs.joss.dev/reference/rm/">rm    </a>       | Remove a story from your bookshelf                           |
 | <a href="https://bookshelf.docs.joss.dev/reference/start/">start  </a>   | Start a new chapter for a story on your bookshelf            |
 | <a href="https://bookshelf.docs.joss.dev/reference/stop/">stop    </a>   | Stop the current chapter of a story on your bookshelf        |
+| <a href="https://bookshelf.docs.joss.dev/reference/create/">tag    </a>  | Add a new tag a story on your bookshelf                      |
+| <a href="https://bookshelf.docs.joss.dev/reference/create/">untag   </a> | Remove a tag from a story on your bookshelf                  |
 
 ## 🤝 Contributing 
 

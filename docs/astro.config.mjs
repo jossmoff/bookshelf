@@ -34,6 +34,8 @@ export default defineConfig({
 						{ label: 'bookshelf rm', link: '/reference/rm/' },
 						{ label: 'bookshelf start', link: '/reference/start/' },
 						{ label: 'bookshelf stop', link: '/reference/stop/' },
+						{ label: 'bookshelf tag', link: '/reference/tag/' },
+						{ label: 'bookshelf untag', link: '/reference/untag/' },
 					]
 				},
 			],
