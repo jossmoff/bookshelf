@@ -39,7 +39,7 @@ jobs:
         path: .mutmut-cache
         key: mutmut-cache-${{ github.head_ref }}-${{ hashFiles('bookshelf/*.py') }}
         restore-keys: |
-          mutmut-cache-${{ github.head_ref }}
+          mutmut-cache-${{ github.head_ref || 'main'}}
           mutmut-cache-main
 
     - name: 🦠 Run Mutation Tests
