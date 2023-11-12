@@ -195,20 +195,9 @@ def tag_story(story_name: str, tag: str):
 @bookshelf.command(name='untag')
 @click.argument('story_name', type=story_type)
 @click.argument('tag', type=str)
-def tag_story(story_name: str, tag: str):
+def untag_story(story_name: str, tag: str):
     """Remove a tag from a story on your bookshelf"""
     story = bookshelf_storage.load_story(story_name)
     story.remove_tag(tag)
     bookshelf_console.print(f'🏷️ The tag \'{tag}\' has been removed from \'{story_name}\'!')
     bookshelf_storage.save_story(story)
-
-
-@bookshelf.command(name='info')
-@click.argument('story_name', type=story_type)
-def story_info_entry(story_name: str):
-    """Displays the information for a given story on your bookshelf"""
-    try:
-        story = bookshelf_storage.load_story(story_name)
-        bookshelf_console.render_story_panel(story)
-    except KeyboardInterrupt:
-        pass
