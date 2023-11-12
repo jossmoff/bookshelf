@@ -48,6 +48,34 @@ def test_story_to_dict(sample_story):
     assert_that(story_dict).is_equal_to(STORY_JSON)
 
 
+def test_add_new_tag_adds_tag():
+    story = Story.from_json(STORY_JSON)
+    new_tag = 'new_tag'
+    story.add_tag(new_tag)
+    assert_that(story.tags).contains_only('tag1', 'tag2', new_tag)
+
+
+def test_add_duplicate_tag_does_not_add_tag():
+    story = Story.from_json(STORY_JSON)
+    existing_tag = 'tag1'
+    story.add_tag(existing_tag)
+    assert_that(story.tags).contains_only('tag1', 'tag2')
+
+
+def test_remove_existing_tag_removes_tag():
+    story = Story.from_json(STORY_JSON)
+    existing_tag = 'tag1'
+    story.remove_tag(existing_tag)
+    assert_that(story.tags).contains_only('tag2')
+
+
+def test_remove_non_existing_tag_does_not_remove_tag():
+    story = Story.from_json(STORY_JSON)
+    non_existing_tag = 'non_existing_tag'
+    story.remove_tag(non_existing_tag)
+    assert_that(story.tags).contains_only('tag1', 'tag2')
+
+
 def test_story_from_dict():
     story = Story.from_json(STORY_JSON)
     assert story.name == STORY_NAME
