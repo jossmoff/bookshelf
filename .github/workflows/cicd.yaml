@@ -22,8 +22,8 @@ jobs:
     - name: 📦 Install dependencies
       run: pip install -r requirements-dev.txt  # Replace with your requirements file
 
-    - name: ❄️ Run Flake8
-      run: flake8 .
+    - name: 💻 Run Ruff checks
+      run: ruff check .
 
     - name: 🧪 Run unit tests
       run: pytest --cov
