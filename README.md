@@ -32,6 +32,10 @@
   <a href="LICENSE">
     <img src="https://img.shields.io/github/license/jossmoff/bookshelf.svg">
   </a>
+
+  <a href="https://github.com/astral-sh/ruff">
+    <img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" alt="Ruff" style="max-width:100%;">
+  </a>
 </p>
 
 ## 🔎 Tracking your productivity has never been easier

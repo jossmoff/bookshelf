@@ -14,5 +14,7 @@ class StoryType(ParamType):
     def shell_complete(self, ctx, param, incomplete):
         return [
             CompletionItem(story.name, help=story.tags)
-            for story in self.bookshelf_storage.get_all_stories_matching_incomplete_name(incomplete)
+            for story in self.bookshelf_storage.get_all_stories_matching_incomplete_name(
+                incomplete
+            )
         ]
