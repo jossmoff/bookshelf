@@ -9,7 +9,9 @@ def create_in_progress_chapter() -> Chapter:
     return Chapter(start_time)
 
 
-def create_chapter_from_delta(delta: timedelta, start_time: Optional[datetime] = None) -> Chapter:
+def create_chapter_from_delta(
+    delta: timedelta, start_time: Optional[datetime] = None
+) -> Chapter:
     if start_time is None:
         start_time = datetime.now()
     end_time = start_time + delta
