@@ -3,6 +3,6 @@ rich-click~=1.7.3
 assertpy~=1.1.0
 pytest==7.4.4
 pytest-cov==4.1.0
-setuptools==69.0.3
+setuptools==69.1.1
 mutmut~=2.4.4
 ruff~=0.2.0
